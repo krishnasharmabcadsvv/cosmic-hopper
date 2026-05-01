@@ -1,0 +1,317 @@
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.4;
+  }
+}
+
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.loading-circle {
+  width: 50px;
+  height: 50px;
+  border: 3px solid var(--glass-border);
+  border-top-color: var(--neon-blue);
+  border-radius: 50%;
+  animation: rotate 1s linear infinite;
+}
+
+.loading-container p {
+  font-family: "Rajdhani", sans-serif;
+  color: var(--neon-blue);
+  font-size: 18px;
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+:root {
+  --space-blue: #0b1026;
+  --neon-blue: #00f3ff;
+  --neon-magenta: #ff00e5;
+  --neon-green: #39ff14;
+  --neon-orange: #ff7b00;
+  --glass-bg: rgba(255, 255, 255, 0.1);
+  --glass-border: rgba(255, 255, 255, 0.2);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: linear-gradient(135deg, #0b1026 0%, #1a1b4b 100%);
+  font-family: "Inter", sans-serif;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  color: white;
+}
+
+#gameContainer {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  max-width: none;
+  border-radius: 0;
+  box-shadow: none;
+  overflow: hidden;
+}
+
+canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 0;
+  image-rendering: pixelated;
+  image-rendering: -webkit-optimize-contrast;
+  -ms-interpolation-mode: nearest-neighbor;
+}
+
+.screen {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: rgba(11, 16, 38, 0.8);
+  /* Removed backdrop-filter blur to fix canvas blur issue */
+  z-index: 10;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.hidden {
+  opacity: 0;
+  transform: scale(1.1);
+  pointer-events: none;
+}
+
+.title {
+  font-family: "Orbitron", sans-serif;
+  font-size: 52px;
+  font-weight: 700;
+  margin-bottom: 30px;
+  text-align: center;
+  background: linear-gradient(135deg, var(--neon-blue), var(--neon-magenta));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 15px rgba(0, 243, 255, 0.5));
+  animation: titlePulse 2s ease-in-out infinite alternate;
+}
+
+.score {
+  font-family: "Rajdhani", sans-serif;
+  font-size: 36px;
+  font-weight: 600;
+  padding: 10px 25px;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: 15px;
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: white;
+  text-shadow: 0 0 10px var(--neon-magenta);
+  transition: transform 0.3s ease;
+}
+
+.score.updated {
+  transform: translateX(-50%) scale(1.2);
+}
+
+.btn {
+  font-family: "Rajdhani", sans-serif;
+  font-size: 24px;
+  font-weight: 600;
+  padding: 15px 50px;
+  margin: 15px;
+  background: rgba(57, 255, 20, 0.1);
+  border: 2px solid var(--neon-green);
+  color: var(--neon-green);
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  text-shadow: 0 0 5px var(--neon-green);
+  box-shadow: 0 0 20px rgba(57, 255, 20, 0.2);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  letter-spacing: 1px;
+}
+
+.btn:hover {
+  background: var(--neon-green);
+  color: var(--space-blue);
+  transform: translateY(-2px);
+  box-shadow: 0 0 30px rgba(57, 255, 20, 0.4);
+}
+
+.btn:active {
+  transform: translateY(0);
+}
+
+.instructions {
+  font-size: 18px;
+  margin-top: 25px;
+  padding: 15px 40px;
+  max-width: 600px;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: 10px;
+  color: rgba(255, 255, 255, 0.9);
+  text-align: center;
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  line-height: 1.5;
+}
+
+#muteBtn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  color: white;
+  cursor: pointer;
+  font-size: 20px;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+}
+
+#muteBtn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: scale(1.1);
+}
+
+@keyframes titlePulse {
+  0% {
+    filter: drop-shadow(0 0 10px rgba(0, 243, 255, 0.5));
+  }
+  100% {
+    filter: drop-shadow(0 0 20px rgba(0, 243, 255, 0.8));
+  }
+}
+
+.game-over {
+  animation: fadeInScale 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.high-score {
+  font-family: "Rajdhani", sans-serif;
+  font-size: 24px;
+  margin: 0;
+  padding: 10px 25px;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: 10px;
+  color: var(--neon-orange);
+  text-shadow: 0 0 5px var(--neon-orange);
+}
+#gameScreen.no-blur {
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  background: transparent !important;
+  border: none !important;
+  color: var(--neon-magenta) !important;
+  text-shadow: 0 0 15px var(--neon-magenta) !important;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 600px) {
+  .title {
+    font-size: 32px;
+    margin-bottom: 10px;
+  }
+
+  .game-over {
+    gap: 10px;
+  }
+
+  .score {
+    font-size: 20px;
+    padding: 8px 15px;
+    border-radius: 10px;
+    top: 10px;
+  }
+
+  .btn {
+    font-size: 18px;
+    padding: 12px 30px;
+    margin: 10px;
+    border-radius: 20px;
+  }
+
+  .instructions {
+    font-size: 14px;
+    padding: 12px 25px;
+    margin-top: 15px;
+    max-width: 90%;
+  }
+
+  #muteBtn {
+    width: 30px;
+    height: 30px;
+    font-size: 16px;
+    top: 10px;
+    right: 10px;
+  }
+
+  #gameContainer {
+    width: 100vw;
+    height: 100vh;
+  }
+}

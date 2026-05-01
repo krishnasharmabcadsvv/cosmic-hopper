@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cosmic Hopper</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Rajdhani:wght@500;600&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.49/Tone.js"></script>
+</head>
+</head>
+<body>
+    <div id="loadingScreen" class="screen">
+        <div class="loading-container">
+            <div class="loading-circle"></div>
+            <p>Loading Cosmic Adventure...</p>
+        </div>
+    </div>
+    
+    <div id="gameContainer">
+        <canvas id="gameCanvas"></canvas>
+        
+        <div id="startScreen" class="screen hidden">
+            <h1 class="title">COSMIC HOPPER/h1>
+            <button class="btn" id="startBtn">PLAY</button>
+            <p class="instructions">Press SPACE or TAP to hop through space!</p>
+        </div>
+
+        <div id="gameScreen" class="screen hidden">
+            <div class="score">Score: <span id="scoreValue">0</span></div>
+        </div>
+
+        <div id="gameOverScreen" class="screen hidden">
+            <h2 class="title">GAME OVER</h2>
+            <p class="score">Final Score: <span id="finalScore">0</span></p>
+            <p class="score">High Score: <span id="highScore">0</span></p>
+            <button class="btn" id="retryBtn">RETRY</button>
+        </div>
+
+        <button id="muteBtn">🔊</button>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
