@@ -175,7 +175,17 @@ This project is licensed under the MIT License - see the cosmic freedom to use, 
 
 <div align="center">
 
+### 🌌 Ready to Begin Your Cosmic Journey? 🌌
 
-[![Made with Love](https://img.shields.io/badge/Made%20with-💫%20Cosmic%20Energy-00F3FF?style=for-the-badge)](https://github.com/abhrajyoti-01/cosmic-hopper)
+**[🚀 Launch the Game](https://cosmic-hopper-tau.vercel.app/)**
+
+*Made with 💫 by [abhrajyoti-01](https://github.com/krishnasharmabcadsvv)*
+
+```
+  ⭐ If you enjoyed hopping through the cosmos, 
+     please star this repository! ⭐
+```
+
+[![Made with Love](https://img.shields.io/badge/Made%20with-💫%20Cosmic%20Energy-00F3FF?style=for-the-badge)](https://github.com/krishnasharmabcadsvv/cosmic-hopper)
 
 </div>
