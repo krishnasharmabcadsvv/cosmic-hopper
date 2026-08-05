@@ -179,7 +179,7 @@ This project is licensed under the MIT License - see the cosmic freedom to use, 
 
 **[🚀 Launch the Game](https://cosmic-hopper-tau.vercel.app/)**
 
-*Made with 💫 by [krishnasharmabcadsvv](https://github.com/krishnasharmabcadsvv)*
+*Made with 💫 by [KrishnaSharma009](https://github.com/KrishnaSharma009)*
 
 ```
   ⭐ If you enjoyed hopping through the cosmos, 
