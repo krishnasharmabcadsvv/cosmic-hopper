@@ -28,8 +28,8 @@ const player = {
   y: canvas.height / 2,
   radius: 15,
   velocity: 0,
-  gravity: 0.65,
-  jumpForce: -11,
+  gravity: 0.50,
+  jumpForce: -8,
   trail: [],
   maxTrailLength: 10,
 
